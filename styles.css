@@ -1,0 +1,595 @@
+/* Importação de fonte (opcional, se você descomentou no HTML) */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Reset Básico */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --dark-green: #1A302F;
+    --light-green: #3DCC91;
+    --text-white: #FAFAFA;
+    --text-light-gray: #B0B0B0;
+    --dark-gray-bg: #2B2B2B;
+    --card-bg: #3A3A3A;
+    --overlay-gradient: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0) 100%);
+    --app-gradient-border: linear-gradient(to bottom, #10201F, #00BCD4); /* Ajustado para um verde/azul sutil */
+}
+
+body {
+    background-color: #000;
+    color: var(--text-white);
+    overflow-x: hidden; /* Evita rolagem horizontal indesejada */
+}
+
+/* Fundo da tela com gradiente sutil */
+.app-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1A1A1A 0%, #08100F 100%); /* Fundo escuro */
+    z-index: -1;
+}
+/* Gradiente nas bordas da "tela do celular" */
+.container {
+    max-width: 450px; /* Largura máxima para simular um celular */
+    margin: 0 auto;
+    background-color: var(--dark-green); /* Cor principal do app */
+    min-height: 100vh;
+    box-shadow: 0 0 50px rgba(0, 200, 100, 0.3); /* Sombra verde */
+    border-radius: 30px; /* Bordas arredondadas do "celular" */
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+    position: relative;
+    padding-bottom: 70px; /* Espaço para a nav bar inferior */
+}
+
+/* --- HEADER PRINCIPAL --- */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: transparent; /* Transparente para ver o banner */
+}
+.main-header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--light-green); /* Verde claro para o logo 'A' */
+}
+.header-icons .icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-left: 15px;
+    background-color: var(--text-white); /* Cor dos ícones */
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+.logo-img {
+    display: inline;
+    width: 24px;
+    height: 24px;
+}
+
+/* Ícones específicos (usando mask para SVGs ou background-image para PNGs) */
+.search-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>'); }
+.bell-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>'); }
+
+
+/* --- HERO BANNER --- */
+.hero-banner {
+    width: 100%;
+    height: 400px; /* Altura do banner */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end; /* Conteúdo na parte inferior */
+    padding-bottom: 20px;
+    z-index: 1; /* Para ficar abaixo do header fixo */
+}
+.hero-banner::before { /* Pseudo-elemento para o gradiente superior */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Altura do gradiente */
+    background: linear-gradient(to bottom, var(--dark-green), transparent);
+    z-index: 2;
+}
+.overlay { /* Gradiente inferior para contraste do texto */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%; /* Altura do gradiente */
+    background: var(--overlay-gradient);
+    z-index: 3;
+}
+.banner-content {
+    position: relative;
+    z-index: 4;
+    padding: 0 20px;
+    width: 100%;
+}
+.banner-title {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.banner-genres {
+    font-size: 14px;
+    color: var(--text-light-gray);
+    margin-bottom: 20px;
+}
+.banner-actions {
+    display: flex;
+    gap: 10px;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.btn-play {
+    background-color: var(--light-green); /* Verde claro */
+    color: var(--dark-green); /* Texto verde escuro */
+}
+.btn-mylist {
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo transparente claro */
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.btn .icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    background-color: currentColor; /* Usa a cor do texto do botão */
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+/* Ícones dos botões */
+.play-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M8 5v14l11-7z"/></svg>'); }
+.add-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>'); }
+
+
+/* --- SEÇÕES DE CONTEÚDO --- */
+.content-sections {
+    padding: 20px;
+    background-color: var(--dark-green); /* Para transição suave do banner */
+    position: relative;
+    z-index: 5; /* Garante que fique acima do banner ao rolar */
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -20px; /* Para sobrepor o banner levemente */
+    padding-top: 40px;
+}
+
+.content-row {
+    margin-bottom: 30px;
+}
+.row-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 15px;
+    padding: 0 5px; /* Pequeno padding para os títulos */
+}
+.row-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+}
+.see-all {
+    color: var(--light-green);
+    font-size: 14px;
+    font-weight: 500;
+}
+.cards-container {
+    display: flex;
+    overflow-x: scroll; /* Scroll horizontal */
+    gap: 15px;
+    padding-bottom: 10px; /* Espaço para sombra/scroll */
+    scrollbar-width: none; /* Esconde a barra de rolagem Firefox */
+    -ms-overflow-style: none; /* Esconde a barra de rolagem IE/Edge */
+}
+/* Esconde a barra de rolagem para navegadores baseados em WebKit */
+.cards-container::-webkit-scrollbar {
+    display: none;
+}
+
+.anime-card {
+    position: relative;
+    width: 130px; /* Largura base */
+    min-width: 130px; /* Garante que não encolha */
+    height: 180px; /* Altura para cards retangulares */
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    background-color: var(--card-bg); /* Fundo caso a imagem não carregue */
+    transition: transform 0.2s ease;
+}
+.anime-card.square { /* Cards para "New Episode Releases" */
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+}
+
+.anime-card:hover {
+    transform: translateY(-5px);
+}
+.card-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cobre o card sem distorcer */
+}
+.rating {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: var(--light-green); /* Verde claro */
+    color: var(--dark-green);
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    z-index: 10;
+}
+.rank {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 36px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+
+/* --- BOTTOM NAVIGATION --- */
+.bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65px;
+    background-color: var(--dark-green);
+    position: fixed;
+    width: 100%; /* Ocupa toda a largura do container */
+    max-width: 450px; /* Limita à largura do container */
+    bottom: 0;
+    left: 50%; /* Centraliza no container */
+    transform: translateX(-50%);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 20px; /* Borda arredondada */
+    border-top-right-radius: 20px;
+    z-index: 100;
+}
+.bottom-nav .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--text-light-gray);
+    font-size: 11px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.bottom-nav .nav-item.active {
+    color: var(--light-green); /* Verde claro para o ativo */
+}
+.bottom-nav .nav-item .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+    background-color: currentColor; /* Usa a cor do texto do item */
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+/* Ícones da navegação inferior (substitua por SVG/PNG reais se necessário) */
+.home-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>'); }
+.calendar-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>'); }
+.mylist-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 9H5v2h14V9zm0-4H5v2h14V5zM5 15h14v2H5v-2zm0 4h14v2H5v-2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 9H5v2h14V9zm0-4H5v2h14V5zM5 15h14v2H5v-2zm0 4h14v2H5v-2z"/></svg>'); }
+.download-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>'); }
+.profile-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>'); }
+
+/* --- ADICIONAR ESTILOS ESPECÍFICOS PARA A PÁGINA MY LIST --- */
+
+/* Ajusta o padding do container para acomodar a barra de título */
+.container {
+    /* ... outros estilos ... */
+    padding-top: 70px; /* Adiciona padding para o header fixo/título */
+}
+
+/* Modificação do Header para a página My List */
+.main-header {
+    /* ... Remova 'position: absolute;' e use flex para o layout da lista */
+    position: fixed; /* Fixa o header no topo */
+    background-color: var(--dark-green); /* Fundo sólido para o topo */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    align-items: center;
+    padding: 10px 20px;
+    height: 60px; /* Altura fixa */
+    top: 0;
+    z-index: 100;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: 600;
+    flex-grow: 1; /* Permite que o título ocupe o espaço central */
+    margin-left: 15px;
+}
+.main-header .logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--light-green); 
+    margin-right: auto; /* Empurra o logo para a esquerda se necessário */
+}
+.header-icons {
+    margin-left: auto; /* Empurra os ícones para a direita */
+}
+
+
+/* GRADE DE CONTEÚDO PRINCIPAL (My List) */
+.grid-content {
+    /* A grade começa abaixo do padding-top do container (70px) */
+    padding: 20px; 
+    display: grid;
+    /* 2 colunas com espaçamento de 15px */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+}
+
+.anime-card.grid-item {
+    /* Ajustes para o card na grade (tamanho proporcional) */
+    width: 100%; /* Ocupa a largura total da coluna */
+    height: 250px; /* Altura fixa para este layout de grade */
+    /* Remove a sombra e a transformação que é mais adequada para scroll horizontal */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    transform: none;
+}
+.anime-card.grid-item:hover {
+    transform: none;
+}
+
+/* Ajuste da posição do rating para o canto superior direito (como na imagem) */
+.rating.playlist-rating {
+    top: 8px;
+    right: 8px;
+    left: auto; /* Desfaz o left: 8px do estilo anterior */
+}
+
+/* --- ESTILOS ESPECÍFICOS PARA A PÁGINA PROFILE --- */
+
+/* Ajuste do Header da página Profile */
+.profile-header {
+    /* O header da Profile é ligeiramente diferente (tem o A, o título e a opção de mais) */
+    justify-content: space-between;
+}
+.profile-header .page-title {
+    margin-left: 15px;
+    flex-grow: 0;
+}
+
+.profile-content {
+    padding: 20px;
+    padding-top: 20px; /* Já tem padding-top do container */
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 5;
+    background-color: var(--dark-green);
+    min-height: calc(100vh - 65px); /* Garante que o fundo cubra a tela acima da nav bar */
+}
+
+/* 1. SEÇÃO DE INFORMAÇÕES DO USUÁRIO */
+.user-info-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.profile-avatar-container {
+    position: relative;
+    margin-right: 15px;
+}
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--light-green); /* Borda verde clara */
+}
+.edit-badge {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: var(--light-green); /* Cor de edição */
+    border: 2px solid var(--dark-green);
+    /* Adicione um ícone de caneta ou use um background image aqui */
+    /* Exemplo: */
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'); 
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>');
+    background-color: var(--dark-green); /* Ícone escuro na bolha verde */
+    -webkit-mask-size: 80%;
+    mask-size: 80%;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+.username {
+    font-size: 18px;
+    font-weight: 600;
+}
+.user-email {
+    font-size: 14px;
+    color: var(--text-light-gray);
+}
+
+/* 2. CARD PREMIUM */
+.premium-card {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 30px;
+    border-radius: 15px;
+    background-color: rgba(61, 204, 145, 0.1); /* Fundo sutil do card */
+    border: 1px solid var(--light-green);
+    cursor: pointer;
+}
+.premium-crown {
+    display: block;
+    width: 30px;
+    height: 30px;
+    background-color: var(--light-green);
+    margin-right: 15px;
+    /* Ícone de coroa (substitua pelo seu SVG se tiver) */
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>'); 
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>');
+}
+.premium-text {
+    flex-grow: 1;
+}
+.premium-text h3 {
+    color: var(--light-green);
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+.premium-text p {
+    font-size: 12px;
+    color: var(--text-light-gray);
+}
+
+
+/* 3. LISTA DE CONFIGURAÇÕES */
+.settings-list {
+    display: flex;
+    flex-direction: column;
+}
+.setting-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+    text-decoration: none;
+    color: var(--text-white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); /* Linha divisória sutil */
+}
+.setting-item:last-child {
+    border-bottom: none;
+    margin-top: 10px;
+}
+.setting-item .icon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin-right: 15px;
+    background-color: var(--text-light-gray); /* Cor dos ícones padrão */
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+.setting-text {
+    flex-grow: 1;
+    font-size: 16px;
+    font-weight: 500;
+}
+.setting-value {
+    color: var(--text-light-gray);
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+/* Item de Logout (Vermelho de Destaque) */
+.logout-item {
+    color: #FF0000; /* Vermelho forte para Logout */
+}
+.logout-item .icon {
+    background-color: #FF0000;
+}
+
+
+/* ÍCONES DE CONFIGURAÇÃO (Novos ícones a serem adicionados) */
+.arrow-right { 
+    width: 16px !important; 
+    background-color: var(--text-light-gray) !important;
+    -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'); 
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>'); 
+}
+
+/* Ícones de Menu (substitua pelos seus SVGs reais) */
+.more-options-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/></svg>'); }
+.edit-profile-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'); }
+.notification-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6-6v-5c0-3.07-1.63-5.64-4.5-6.32V4c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68C7.64 5.36 6 7.93 6 11v5l-2 2v1h16v-1l-2-2z"/></svg>'); }
+.security-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 6h2v2h-2V7zm0 4h2v6h-2v-6z"/></svg>'); }
+.language-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-12v.5l4 7.5-.5.5h-1L9.75 14H7.5v2h8.5v-2h-1.25L10 5zm1.5 1.5L13.75 13h-4L11.5 6.5z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-2-12v.5l4 7.5-.5.5h-1L9.75 14H7.5v2h8.5v-2h-1.25L10 5zm1.5 1.5L13.75 13h-4L11.5 6.5z"/></svg>'); }
+.dark-mode-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.91-.1-1.36-.96 1.34-2.55 2.22-4.39 2.22-3.55 0-6.44-2.89-6.44-6.44 0-1.84.88-3.43 2.22-4.39.04-.06.07-.13.1-.19-.04.02-.07.03-.1.05z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9c0-.46-.04-.91-.1-1.36-.96 1.34-2.55 2.22-4.39 2.22-3.55 0-6.44-2.89-6.44-6.44 0-1.84.88-3.43 2.22-4.39.04-.06.07-.13.1-.19-.04.02-.07.03-.1.05z"/></svg>'); }
+.help-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.43 12.51 13 13.5 13 14h-2c0-.85.39-1.57.82-2.15l1.8-1.8C14.18 9.38 14.5 8.94 14.5 8.5c0-.82-.68-1.5-1.5-1.5s-1.5.68-1.5 1.5H9c0-1.92 1.57-3.5 3.5-3.5s3.5 1.58 3.5 3.5c0 .48-.22.95-.59 1.31z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.43 12.51 13 13.5 13 14h-2c0-.85.39-1.57.82-2.15l1.8-1.8C14.18 9.38 14.5 8.94 14.5 8.5c0-.82-.68-1.5-1.5-1.5s-1.5.68-1.5 1.5H9c0-1.92 1.57-3.5 3.5-3.5s3.5 1.58 3.5 3.5c0 .48-.22.95-.59 1.31z"/></svg>'); }
+.privacy-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 14c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"/></svg>'); }
+.logout-icon { -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17 7l-1.41 1.41L18.17 11H9v2h9.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>'); mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M17 7l-1.41 1.41L18.17 11H9v2h9.17l-2.58 2.58L17 17l5-5-5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>'); }
+
+/* ESTILO DO SWITCH (DARK MODE) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+    margin-left: 10px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: var(--light-green);
+}
+input:checked + .slider:before {
+    transform: translateX(18px);
+}
+.slider.round {
+    border-radius: 25px;
+}
+.slider.round:before {
+    border-radius: 50%;
+}
