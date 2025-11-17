@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes - Demon Slayer</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-background"></div>
+    <div class="container detail-page-container">
+        
+        <section class="video-player-section">
+            <div class="player-banner" style="background-image: url('demon_slayer_detail.png');">
+                <div class="top-bar-overlay">
+                    <a href="playlist.html">
+                        <span class="icon back-arrow"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <main class="detail-content">
+
+            <div class="metadata-block">
+                <h1 class="content-title">Curso de Depilação</h1>
+                <div class="action-icons">
+                    <span class="icon bookmark-icon"></span>
+                    <span class="icon share-icon"></span>
+                </div>
+                
+                <div class="tags-row">
+                    <span class="rating-tag"><span class="icon star-icon"></span> 9.8</span>
+                    <span class="year-tag">2022</span>
+                    <span class="age-tag">13+</span>
+                    <span class="info-tag light-green-border">Português</span>
+                    <span class="info-tag light-green-border">Legenda</span>
+                </div>
+
+                <div class="main-actions-row">
+                    <button class="btn btn-play full-width"><span class="icon play-icon"></span>Play</button>
+                    <button class="btn btn-download full-width"><span class="icon download-icon-btn"></span>Download</button>
+                </div>
+            </div>
+            
+            <p class="synopsis">
+                Genre: Action, Martial Arts, Adventure. Dark Fantasy, Thriller. <span class="read-more">...Ver mais</span>
+            </p>
+            <p class="full-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut aliquip ex ea commodo consequat...
+            </p>
+
+            <section class="episode-section">
+                <h2 class="section-title">Episodios</h2>
+                <div class="dropdown-filter">
+                    <span>Season 2</span>
+                    <span class="icon dropdown-arrow"></span>
+                </div>
+                
+                <div class="episode-cards-container">
+                    
+                    <div class="episode-card">
+                        <img src="episode_1_thumb.png" alt="Episode 1" class="episode-thumbnail">
+                        <span class="episode-number">Episode 1</span>
+                    </div>
+                    <div class="episode-card">
+                        <img src="episode_1_thumb.png" alt="Episode 2" class="episode-thumbnail">
+                        <span class="episode-number">Episode 2</span>
+                    </div>
+                    <div class="episode-card">
+                        <img src="episode_1_thumb.png" alt="Episode 3" class="episode-thumbnail">
+                        <span class="episode-number">Episode 3</span>
+                    </div>
+                </div>
+                
+                <h2 class="section-title more-like-this-title">More Like This</h2>
+            </section>
+
+            <section class="comments-section">
+                <div class="comments-header">
+                    <span class="comments-tab active-tab">Comments (29.5K)</span>
+                    </div>
+                <p class="comments-count">29.5K Comments</p>
+                <span class="see-all-comments">See all</span>
+                
+                <div class="comment-item">
+                    <img src="foto-perfil.png" alt="Avatar" class="comment-avatar">
+                    <span class="comment-username">Willard Purnell</span>
+                    <span class="icon more-options-icon-small"></span>
+                </div>
+            </section>
+
+        </main>
+        
+    </div>
+    <div id="commentsModal" class="modal-bottom-sheet">
+    <div class="modal-content">
+        
+        <header class="comments-modal-header">
+            <span class="icon back-arrow" onclick="closeCommentsModal()"></span>
+            <h1 class="comments-count-title">29.5K Comments</h1>
+            <span class="icon more-options-icon-small"></span> 
+        </header>
+
+        <main class="comments-list-container">
+            
+            <div class="comment-full-item">
+                <img src="foto-perfil.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Willard Purnell</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 938</span>
+                        <span class="comment-time">3 days ago</span>
+                        <span class="reply-button">Reply</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-full-item">
+                <img src="foto-perfil.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Hannah Burress</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore. 😍💯💯
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 847</span>
+                        <span class="comment-time">2 days ago</span>
+                        <span class="reply-button">Reply</span>
+                    </div>
+                </div>
+            </div>
+            
+            </main>
+
+        <footer class="comment-input-bar">
+            <input type="text" placeholder="Add comment..." class="comment-input">
+            <span class="icon emoji-icon"></span>
+            <button class="btn btn-send"><span class="icon send-icon"></span></button>
+        </footer>
+        
+    </div>
+</div>
+
+<script>
+    function openCommentsModal() {
+        document.getElementById('commentsModal').classList.add('is-visible');
+        document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+    }
+
+    function closeCommentsModal() {
+        document.getElementById('commentsModal').classList.remove('is-visible');
+        document.body.style.overflow = '';
+    }
+
+    // Liga o clique do "See all" para abrir o modal
+    document.querySelector('.see-all-comments').addEventListener('click', openCommentsModal);
+</script>
+
+</body>
+</html>
