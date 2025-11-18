@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes - StreamOn</title>
+    <link rel="shortcut icon" href="./img/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/styles.css"> 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="app-background"></div>
+    <div class="container detail-page-container">
+        
+        <section class="video-player-section">
+            <div class="player-banner" style="background-image: url('./img/demon_slayer_detail.png');">
+                <div class="top-bar-overlay">
+                    <a href="playlist.html">
+                        <span class="icon back-arrow"></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <main class="detail-content">
+
+            <div class="metadata-block">
+                <h1 class="content-title">Curso de Depilação</h1>
+                <div class="action-icons">
+                    <span class="icon bookmark-icon"></span>
+                    <span class="icon share-icon"></span>
+                    <i class="ri-share-line"></i>
+                </div>
+                
+                <div class="tags-row">
+                    <span class="rating-tag"><span class="icon star-icon"></span> 9.8</span>
+                    <span class="year-tag">2022</span>
+                    <span class="age-tag">13+</span>
+                    <span class="info-tag light-green-border">Português</span>
+                    <span class="info-tag light-green-border">Legenda</span>
+                </div>
+
+                <div class="main-actions-row">
+                    <button class="btn btn-play full-width"><span class="icon play-icon"></span>Play</button>
+                    <button class="btn btn-download full-width"><span class="icon download-icon-btn"></span>Download</button>
+                </div>
+            </div>
+            
+            <p class="synopsis">
+                Gênero: Estética, Empreendedorismo, Beleza. <span class="read-more">...Ver mais</span>
+            </p>
+            <p class="full-text">
+                Domine as técnicas de depilação profissional com cera quente, fria, e egípcia. Aprenda biossegurança, atendimento ao cliente e precificação para iniciar....
+            </p>
+
+            <section class="episode-section">
+                <h2 class="section-title">Episodios</h2>
+                <div class="dropdown-filter">
+                    <span>Módulo 1</span>
+                    <span class="icon dropdown-arrow"></span>
+                </div>
+                
+                <div class="episode-cards-container">
+                    
+                    <div class="episode-card">
+                        <img src="./img/episode_1_thumb.png" alt="Episode 1" class="episode-thumbnail">
+                        <span class="episode-number">Episodio 1</span>
+                    </div>
+                    <div class="episode-card">
+                        <img src="./img/episode_1_thumb.png" alt="Episode 2" class="episode-thumbnail">
+                        <span class="episode-number">Episodio 2</span>
+                    </div>
+                    <div class="episode-card">
+                        <img src="./img/episode_1_thumb.png" alt="Episode 3" class="episode-thumbnail">
+                        <span class="episode-number">Episodio 3</span>
+                    </div>
+                </div>
+                
+                <h2 class="section-title more-like-this-title"></h2>
+            </section>
+
+            <section class="comments-section">
+                <div class="comments-header">
+                    <span class="comments-tab active-tab">Comentários (29.5K)</span>
+                    </div>
+                <p class="comments-count">29.5K Comentários</p>
+                <span class="see-all-comments">Ver Todos</span>
+                
+                <div class="comment-item">
+                    <img src="./img/foto-perfil2.png" alt="Avatar" class="comment-avatar">
+                    <span class="comment-username">Stefane Medeiros</span>
+                    <span class="icon more-options-icon-small"></span>
+                </div>
+            </section>
+
+        </main>
+        
+    </div>
+    <div id="commentsModal" class="modal-bottom-sheet">
+    <div class="modal-content">
+        
+        <header class="comments-modal-header">
+            <span class="icon back-arrow" onclick="closeCommentsModal()"></span>
+            <h1 class="comments-count-title">29.5K Comentários</h1>
+            <span class="icon more-options-icon-small"></span> 
+        </header>
+
+        <main class="comments-list-container">
+            
+            <div class="comment-full-item">
+                <img src="./img/foto-perfil2.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Stefane Medeiros</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        O curso superou minhas expectativas! A didática da instrutora é excelente, e ela explica cada tipo de cera e técnica com uma clareza impressionante. Recomendo 100%!
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 938</span>
+                        <span class="comment-time">3 h</span>
+                        <span class="reply-button">Responder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-full-item">
+                <img src="./img/foto-perfil4.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Juliana Santos</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        Melhor investimento que fiz este ano! Em menos de um mês após concluir, já recuperei o valor do curso com os primeiros atendimentos. As dicas de gestão de clientes e precificação fizeram toda a diferença. O material de apoio é incrível. Se você está pensando em empreender, faça este curso! 😍💯💯
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 847</span>
+                        <span class="comment-time">10 h</span>
+                        <span class="reply-button">Responder</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="comment-full-item">
+                <img src="./img/foto-perfil7.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Patrícia Mendes</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        A técnica de depilação egípcia foi ensinada de forma impecável. Agora, consigo oferecer um serviço muito mais rápido e menos doloroso para minhas clientes. Nota mil!
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 847</span>
+                        <span class="comment-time">13 h</span>
+                        <span class="reply-button">Responder</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comment-full-item">
+                <img src="./img/foto-perfil8.png" alt="Avatar" class="comment-avatar-lg">
+                <div class="comment-body">
+                    <span class="comment-username">Camila Oliveira</span>
+                    <span class="icon more-options-icon-medium"></span>
+                    <p class="comment-text">
+                        Estava insegura em fazer um curso online, mas o suporte dado após o término é fantástico. Mandei dúvidas sobre produtos e recebi a resposta detalhada no mesmo dia.
+                    </p>
+                    <div class="comment-actions">
+                        <span class="like-count"><span class="icon heart-icon-filled"></span> 847</span>
+                        <span class="comment-time">1 d</span>
+                        <span class="reply-button">Responder</span>
+                    </div>
+                </div>
+            </div>
+
+            </main>
+
+        <footer class="comment-input-bar">
+            <input type="text" placeholder="Comentar..." class="comment-input">
+            <span class="icon emoji-icon"></span>
+            <button class="btn btn-send"><span class="icon send-icon"></span></button>
+        </footer>
+        
+    </div>
+</div>
+
+<script>
+    function openCommentsModal() {
+        document.getElementById('commentsModal').classList.add('is-visible');
+        document.body.style.overflow = 'hidden'; // Evita scroll do fundo
+    }
+
+    function closeCommentsModal() {
+        document.getElementById('commentsModal').classList.remove('is-visible');
+        document.body.style.overflow = '';
+    }
+
+    // Liga o clique do "See all" para abrir o modal
+    document.querySelector('.see-all-comments').addEventListener('click', openCommentsModal);
+</script>
+
+</body>
+</html>
